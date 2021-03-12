@@ -1,17 +1,6 @@
-import express from 'express'
-import cors from 'cors'
-import winston from 'winston'
+import { initialServer } from "./server";
+import { printStartStatusToConsole } from "./utils/logger";
 
-const app = express()
+const server = initialServer();
 
-app.use(cors())
-
-const logger = winston.createLogger()
-
-app.get('/healthcheck', (_req, res) => {
-  res.json({status: 'ok'})
-})
-
-app.listen(80, '0.0.0.0', () => {
-  logger.info('✨ Server is started at http://localhost')
-})
+server.listen(80, "0.0.0.0", () => printStartStatusToConsole());
