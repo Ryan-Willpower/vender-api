@@ -1,1 +1,4 @@
 node_modules/
+
+# mongodb-memory-server config
+globalConfig.json
