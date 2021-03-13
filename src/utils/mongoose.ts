@@ -2,9 +2,11 @@ import mongoose from "mongoose";
 
 import { logger } from "./logger";
 
-export async function connectToMongo() {
+export async function connectToMongo(
+  url = "mongodb://127.0.0.1:27017/vendor-machine"
+) {
   try {
-    await mongoose.connect("mongodb://127.0.0.1:27017", {
+    await mongoose.connect(url, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
