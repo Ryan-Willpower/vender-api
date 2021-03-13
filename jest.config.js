@@ -1,4 +1,8 @@
+const tsPreset = require("ts-jest/jest-preset");
+const shelfPreset = require("@shelf/jest-mongodb/jest-preset");
+
 module.exports = {
-  preset: 'ts-jest',
-  testEnvironment: 'node',
+  ...tsPreset,
+  ...shelfPreset,
+  testEnvironment: "node",
 };
