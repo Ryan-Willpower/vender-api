@@ -3,8 +3,8 @@ import { Schema, model } from "mongoose";
 import { User } from "../types/model";
 
 const userSchema = new Schema({
-  fullname: Schema.Types.String,
-  username: Schema.Types.String,
+  fullname: { type: Schema.Types.String, required: true },
+  username: { type: Schema.Types.String, required: true },
 });
 
 export const userModel = model<User>("user", userSchema);

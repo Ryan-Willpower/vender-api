@@ -3,9 +3,9 @@ import { Schema, model } from "mongoose";
 import { Machine } from "../types/model";
 
 const machineSchema = new Schema({
-  address: Schema.Types.String,
-  postal_code: Schema.Types.String,
-  vendor_code: Schema.Types.String,
+  address: { type: Schema.Types.String, required: true },
+  postal_code: { type: Schema.Types.String, required: true },
+  vendor_code: { type: Schema.Types.String, required: true },
 });
 
 export const machineModel = model<Machine>("machine", machineSchema);
