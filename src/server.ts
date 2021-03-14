@@ -5,6 +5,7 @@ import { json, urlencoded } from "body-parser";
 import healthCheckRouter from "./routes/healthcheck";
 import userRouter from "./routes/users";
 import machineRouter from "./routes/machines";
+import productRouter from "./routes/products";
 import { requestLoggingMiddleware } from "./utils/middleware";
 
 export function initialServer() {
@@ -23,6 +24,7 @@ export function initialServer() {
   app.use("/", healthCheckRouter);
   app.use("/user", userRouter);
   app.use("/machine", machineRouter);
+  app.use("/product", productRouter);
 
   return app;
 }
