@@ -32,6 +32,7 @@ const addMachineHandler = async (req: Request, res: Response) => {
     await productModel.create({
       ...doc,
       machine_id: machine._id,
+      photo: req.file ? req.file.buffer : undefined,
     });
 
     return res.json({ status: "ok" });
