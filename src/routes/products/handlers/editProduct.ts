@@ -31,7 +31,7 @@ const editMachineHandler = async (req: Request, res: Response) => {
 
     await productModel.updateOne(
       { _id: req.params.product_id, machine_id: machine._id },
-      doc
+      { ...doc, photo: req.file ? req.file.buffer : undefined }
     );
 
     return res.json({ status: "ok" });
