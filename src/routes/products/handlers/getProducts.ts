@@ -25,11 +25,7 @@ const getProductsHandler = async (req: Request, res: Response) => {
 
     return res.status(products.length > 0 ? 200 : 404).json({
       status: "ok",
-      products: products.map((item) => ({
-        id: item._id,
-        name: item.name,
-        quantity: item.quantity,
-      })),
+      products,
     });
   } catch (error) {
     logError(error);

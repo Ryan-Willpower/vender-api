@@ -22,17 +22,17 @@ const addMachineHandler = async (req: Request, res: Response) => {
       return res.status(404).json({ status: "not found" });
     }
 
-    const requiredKey = ["name", "quantity"];
+    const requiredKey = ["name", "quantity", "photo"];
 
     const doc = filterOnlyUseKeyAndValue<{
       name: string;
       quantity: number;
+      photo?: string;
     }>(req.body, requiredKey);
 
     await productModel.create({
       ...doc,
       machine_id: machine._id,
-      photo: req.file ? req.file.buffer : undefined,
     });
 
     return res.json({ status: "ok" });
