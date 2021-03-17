@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 import { machineModel } from "../../../models/machine";
 import { logError } from "../../../utils/logger";
 
-const getMachineHandler = async (_req: Request, res: Response) => {
+const getMachinesHandler = async (_req: Request, res: Response) => {
   try {
     const machines = await machineModel.find();
 
@@ -18,4 +18,4 @@ const getMachineHandler = async (_req: Request, res: Response) => {
   }
 };
 
-export default getMachineHandler;
+export default getMachinesHandler;

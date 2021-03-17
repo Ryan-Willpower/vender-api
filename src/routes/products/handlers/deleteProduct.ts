@@ -5,7 +5,7 @@ import { machineModel } from "../../../models/machine";
 import { productModel } from "../../../models/product";
 import { logError } from "../../../utils/logger";
 
-const deleteMachineHandler = async (req: Request, res: Response) => {
+const deleteProductHandler = async (req: Request, res: Response) => {
   try {
     const error = validationResult(req);
 
@@ -34,4 +34,4 @@ const deleteMachineHandler = async (req: Request, res: Response) => {
   }
 };
 
-export default deleteMachineHandler;
+export default deleteProductHandler;

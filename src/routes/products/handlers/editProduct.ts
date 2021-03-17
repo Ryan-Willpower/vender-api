@@ -6,7 +6,7 @@ import { productModel } from "../../../models/product";
 import { filterOnlyUseKeyAndValue } from "../../../utils/filterRequest";
 import { logError } from "../../../utils/logger";
 
-const editMachineHandler = async (req: Request, res: Response) => {
+const editProductHandler = async (req: Request, res: Response) => {
   try {
     const error = validationResult(req);
 
@@ -43,4 +43,4 @@ const editMachineHandler = async (req: Request, res: Response) => {
   }
 };
 
-export default editMachineHandler;
+export default editProductHandler;
