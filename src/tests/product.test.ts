@@ -53,7 +53,7 @@ describe("Product route", () => {
 
   it("should edit a product and return with ok status", async (done) => {
     const response = await request(server)
-      .patch(`/product/${productId}/?vendor_id=${machineDocument.vendor_code}`)
+      .put(`/product/${productId}/?vendor_id=${machineDocument.vendor_code}`)
       .set("Accept", "application/json")
       .send({ quantity: 20 });
 

@@ -22,7 +22,7 @@ router.post("/", addProductRequestSchema, addProductHandler);
 
 router.patch("/:product_id", purchaseRequestSchema, purchaseHandler);
 
-router.patch("/:product_id", editProductRequestSchema, editProductHandler);
+router.put("/:product_id", editProductRequestSchema, editProductHandler);
 
 router.delete("/:product_id", deleteProductRequestSchema, deleteProductHandler);
 
