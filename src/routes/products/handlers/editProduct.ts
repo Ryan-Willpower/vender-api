@@ -6,7 +6,7 @@ import { productModel } from "../../../models/product";
 import { filterOnlyUseKeyAndValue } from "../../../utils/filterRequest";
 import { logError } from "../../../utils/logger";
 
-const editMachineHandler = async (req: Request, res: Response) => {
+const editProductHandler = async (req: Request, res: Response) => {
   try {
     const error = validationResult(req);
 
@@ -22,16 +22,17 @@ const editMachineHandler = async (req: Request, res: Response) => {
       return res.status(404).json({ status: "not found" });
     }
 
-    const requiredKey = ["name", "quantity"];
+    const requiredKey = ["name", "quantity", "photo"];
 
     const doc = filterOnlyUseKeyAndValue<{
       name: string;
       quantity: number;
+      photo?: string;
     }>(req.body, requiredKey);
 
     await productModel.updateOne(
       { _id: req.params.product_id, machine_id: machine._id },
-      { ...doc, photo: req.file ? req.file.buffer : undefined }
+      doc
     );
 
     return res.json({ status: "ok" });
@@ -42,4 +43,4 @@ const editMachineHandler = async (req: Request, res: Response) => {
   }
 };
 
-export default editMachineHandler;
+export default editProductHandler;

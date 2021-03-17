@@ -27,6 +27,11 @@ const editProductRequestSchema = checkSchema({
     escape: true,
     optional: true,
   },
+  photo: {
+    in: "body",
+    trim: true,
+    optional: true,
+  },
 });
 
 export default editProductRequestSchema;

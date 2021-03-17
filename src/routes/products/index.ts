@@ -1,40 +1,28 @@
 import { Router } from "express";
-import multer from "multer";
 
 import {
   addProductHandler,
   deleteProductHandler,
   editProductHandler,
   getProductsHandler,
+  purchaseHandler,
 } from "./handlers";
 import {
   addProductRequestSchema,
   deleteProductRequestSchema,
   editProductRequestSchema,
+  purchaseRequestSchema,
 } from "./validators";
 
 const router = Router();
 
-const upload = multer({
-  storage: multer.memoryStorage(),
-  limits: { fileSize: 104857600 },
-});
-
 router.get("/", getProductsHandler);
 
-router.post(
-  "/",
-  addProductRequestSchema,
-  upload.single("photo"),
-  addProductHandler
-);
+router.post("/", addProductRequestSchema, addProductHandler);
 
-router.patch(
-  "/:product_id",
-  upload.single("photo"),
-  editProductRequestSchema,
-  editProductHandler
-);
+router.patch("/:product_id", purchaseRequestSchema, purchaseHandler);
+
+router.put("/:product_id", editProductRequestSchema, editProductHandler);
 
 router.delete("/:product_id", deleteProductRequestSchema, deleteProductHandler);
 

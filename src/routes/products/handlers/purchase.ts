@@ -5,7 +5,7 @@ import { machineModel } from "../../../models/machine";
 import { productModel } from "../../../models/product";
 import { logError } from "../../../utils/logger";
 
-const deleteProductHandler = async (req: Request, res: Response) => {
+const purchaseHandler = async (req: Request, res: Response) => {
   try {
     const error = validationResult(req);
 
@@ -21,10 +21,10 @@ const deleteProductHandler = async (req: Request, res: Response) => {
       return res.status(404).json({ status: "not found" });
     }
 
-    await productModel.deleteOne({
-      _id: req.params.product_id,
-      machine_id: machine._id,
-    });
+    await productModel.updateOne(
+      { _id: req.params.product_id, machine_id: machine._id },
+      { $inc: { quantity: -1 } }
+    );
 
     return res.json({ status: "ok" });
   } catch (error) {
@@ -34,4 +34,4 @@ const deleteProductHandler = async (req: Request, res: Response) => {
   }
 };
 
-export default deleteProductHandler;
+export default purchaseHandler;

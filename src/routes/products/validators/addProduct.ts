@@ -22,6 +22,11 @@ const addProductRequestSchema = checkSchema({
     escape: true,
     notEmpty: true,
   },
+  photo: {
+    in: "body",
+    trim: true,
+    optional: true,
+  },
 });
 
 export default addProductRequestSchema;

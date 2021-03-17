@@ -3,17 +3,13 @@ import { Request, Response } from "express";
 import { machineModel } from "../../../models/machine";
 import { logError } from "../../../utils/logger";
 
-const getMachineHandler = async (_req: Request, res: Response) => {
+const getMachinesHandler = async (_req: Request, res: Response) => {
   try {
-    const response = await machineModel.find();
+    const machines = await machineModel.find();
 
-    return res.status(response.length > 0 ? 200 : 404).json({
+    return res.status(machines.length > 0 ? 200 : 404).json({
       status: "ok",
-      machines: response.map((item) => ({
-        address: item.address,
-        postal_code: item.postal_code,
-        vendor_code: item.vendor_code,
-      })),
+      machines,
     });
   } catch (error) {
     logError(error);
@@ -22,4 +18,4 @@ const getMachineHandler = async (_req: Request, res: Response) => {
   }
 };
 
-export default getMachineHandler;
+export default getMachinesHandler;

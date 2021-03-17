@@ -4,7 +4,7 @@ import { validationResult } from "express-validator";
 import { machineModel } from "../../../models/machine";
 import { logError } from "../../../utils/logger";
 
-const getUserHandler = async (req: Request, res: Response) => {
+const getMachineHandler = async (req: Request, res: Response) => {
   try {
     const error = validationResult(req);
 
@@ -35,4 +35,4 @@ const getUserHandler = async (req: Request, res: Response) => {
   }
 };
 
-export default getUserHandler;
+export default getMachineHandler;
