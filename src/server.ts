@@ -15,6 +15,7 @@ export function initialServer() {
   app.use(json());
   app.use(
     urlencoded({
+      limit: "200mb",
       extended: true,
     })
   );
