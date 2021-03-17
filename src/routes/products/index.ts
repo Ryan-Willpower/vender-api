@@ -6,11 +6,13 @@ import {
   deleteProductHandler,
   editProductHandler,
   getProductsHandler,
+  purchaseHandler,
 } from "./handlers";
 import {
   addProductRequestSchema,
   deleteProductRequestSchema,
   editProductRequestSchema,
+  purchaseRequestSchema,
 } from "./validators";
 
 const router = Router();
@@ -28,6 +30,8 @@ router.post(
   upload.single("photo"),
   addProductHandler
 );
+
+router.patch("/:product_id", purchaseRequestSchema, purchaseHandler);
 
 router.patch(
   "/:product_id",
